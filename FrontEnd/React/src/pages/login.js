@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserAction } from '../modules/user';
+import axios from '../api/axios';
 
 const login = () => {
     const dispatch = useDispatch();
@@ -24,6 +25,25 @@ const login = () => {
             phone: '010-1234-5678',
         };
         dispatch(setUserAction(user));
+    };
+
+    const signUp = () => {
+        let user = {
+            id: '123',
+            pw: '456',
+            nm: '789',
+        };
+
+        axios
+            .post('/user/insert', user)
+            .then((res) => {
+                if (res.data.data == 1) {
+                    console.log('회원가입 성공!');
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
 
     return (
