@@ -14,6 +14,11 @@ public class UserServiceImpl implements UserService {
 	UserRepository uRepo;
 	
 	@Override
+	public User selectByUserId(String userId) {
+		return uRepo.selectByUserId(userId);
+	}
+	
+	@Override
 	@Transactional
 	public int insert(User user) {
 		return uRepo.insert(user);

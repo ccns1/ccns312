@@ -1,23 +1,37 @@
-/* eslint-disable camelcase */
 export const initState = {
     user: {},
+    isSignIn: false,
 };
 
-const user_setUser = 'user_setUser';
+const userSetUser = 'userSetUser';
+const userSetIsSignIn = 'userSetIsSignIn';
 
 export const setUserAction = (res) => {
     return {
-        type: user_setUser,
+        type: userSetUser,
         payload: res,
+    };
+};
+
+export const setIsSignInAction = () => {
+    return {
+        type: userSetIsSignIn,
     };
 };
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case user_setUser: {
+        case userSetUser: {
             return {
                 ...state,
                 user: action.payload,
+            };
+        }
+
+        case userSetIsSignIn: {
+            return {
+                ...state,
+                isSignIn: true,
             };
         }
 

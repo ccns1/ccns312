@@ -15,6 +15,11 @@ public class UserRepositoryImpl implements UserRepository {
 	SqlSession session;
 	
 	@Override
+	public User selectByUserId(String userId) {
+		return session.selectOne(ns + "selectByUserId", userId);
+	}
+	
+	@Override
 	public int insert(User user) {
 		return session.insert(ns + "insert", user);
 	}
